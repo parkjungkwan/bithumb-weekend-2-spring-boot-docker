@@ -1,6 +1,7 @@
 package net.zerotodev.api.security.config;
 
 import lombok.RequiredArgsConstructor;
+import net.zerotodev.api.security.domain.SecurityProvider;
 import net.zerotodev.api.security.filter.SecurityFilter;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

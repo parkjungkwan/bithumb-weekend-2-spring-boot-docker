@@ -2,6 +2,7 @@ package net.zerotodev.api.user.domain;
 
 import lombok.Data;
 import net.zerotodev.api.order.domain.Order;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -29,4 +30,6 @@ public class User {
     private String regDate;
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
+    @ElementCollection(fetch = FetchType.EAGER)
+    public List<Role> roles;
 }
