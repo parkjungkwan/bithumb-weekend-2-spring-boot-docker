@@ -2,6 +2,7 @@ package net.zerotodev.api.user.service;
 
 import lombok.RequiredArgsConstructor;
 import net.zerotodev.api.user.domain.User;
+import net.zerotodev.api.user.domain.UserDto;
 import net.zerotodev.api.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +23,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User signin(String username, String password) {
-        return userRepository.signin(username, password);
+    public UserDto signin(User user) {
+        userRepository.signin(user.getUsername(), user.getPassword());
+        return null;
+    }
+
+    @Override
+    public String signup(User user) {
+        userRepository.save(user);
+        return "";
     }
 
     @Override

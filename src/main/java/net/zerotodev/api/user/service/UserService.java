@@ -1,6 +1,7 @@
 package net.zerotodev.api.user.service;
 
 import net.zerotodev.api.user.domain.User;
+import net.zerotodev.api.user.domain.UserDto;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,8 @@ import java.util.Optional;
 public interface UserService {
     boolean existsByUsername(String username);
     Optional<User> findByUsername(String username);
-    User signin(String username, String password);
+    UserDto signin(User user);
+    String signup(User user);
     List<User> findAll();
     User getById(long id);
     void save(User user);
