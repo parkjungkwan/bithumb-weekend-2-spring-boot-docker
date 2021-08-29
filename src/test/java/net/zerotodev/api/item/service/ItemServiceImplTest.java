@@ -1,4 +1,4 @@
-package net.zerotodev.api.item;
+package net.zerotodev.api.item.service;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -22,12 +22,47 @@ import static org.mockito.Mockito.verify;
 import java.util.List;
 import static org.mockito.BDDMockito.given;
 import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
-class ItemApplicationTests {
+@ExtendWith(MockitoExtension.class)
+class ItemServiceImplTest {
+    @MockBean private ItemServiceImpl itemService;
+    @MockBean private ItemRepository itemRepository;
 
-	@Test
-	void contextLoads() {
-	}
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.initMocks(this);
+        itemService = new ItemServiceImpl(itemRepository);
+    }
 
+    @Test
+    void findAll() {
+        Item item = Item.builder()
+                .itemBrand("Apple")
+                .itemName("iPhone")
+                .itemColor("White")
+                .build();
+        assertThat(item.getItemName(), is(equalTo("iPhone")));
+        itemService.save(item);
+        verify(itemRepository).save(item);
+    }
+
+    @Test
+    void findById() {
+    }
+
+    @Test
+    void existsById() {
+    }
+
+    @Test
+    void count() {
+    }
+
+    @Test
+    void save() {
+    }
+
+    @Test
+    void deleteById() {
+    }
 }

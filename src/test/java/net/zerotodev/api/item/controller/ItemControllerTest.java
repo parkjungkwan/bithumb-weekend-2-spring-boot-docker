@@ -71,6 +71,17 @@ class ItemControllerTest {
                 .andExpect(status().isOk())
                 .andDo(print());
     }
+    /**
+     MockHttpServletResponse:
+     Status = 200
+     Error message = null
+     Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json;charset=UTF-8"]
+     Content type = application/json;charset=UTF-8
+     Body = {"itemId":0,"itemBrand":"Galaxy","modelNo":null,"itemName":"Flip","itemColor":"White","releaseDate":null,"soldOut":null,"orders":[]}
+     Forwarded URL = null
+     Redirected URL = null
+     Cookies = []
+     * */
 
     @Test
     void existsById() {
